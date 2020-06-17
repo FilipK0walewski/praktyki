@@ -1,25 +1,73 @@
 body{
     background-color: lightslategray;
-    color: magenta;
+    color: whitesmoke;
     font-size: 24px;
     font-weight: 700;
 }
 
 .error
 {
+    text-align: center;
+    background-color: teal;
     color:magenta;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-#container{
-    width: 900px;
     margin-left: auto;
     margin-right: auto;
+    padding: 30px;
+    width: 500px;
+    border-radius: 20px;
+}
+
+.header{
+    text-align: center;
+    background-color: teal;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+}
+
+.container{
+    margin-top: 95px;
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 #block{
-    width: 900px;
+    background-color: teal;
+    width: 600px;
+    min-height: 175px;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 20px;
+}
+
+#leftBlock{
+    float: left;
+    padding: 15px;
+    width: 400px;
+
+}
+
+#rightBlock{
+    float: left;
+    width: 170px;
+    text-align: center;
+    padding-top: 35px;
+
+}
+
+p.t{
+    margin-top: 350px;
+    font-size: 80px;
+}
+
+
+
+#block:hover{
+    background-color: lightseagreen;
+    cursor: help;
 }
