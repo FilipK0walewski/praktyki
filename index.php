@@ -24,13 +24,21 @@
             $_SESSION['dateError'] = "Prognoza pogody na 5 dni";
         }
 
+        for($i = 0; $i < strlen($city); $i++){
+            if($city[$i] == "&"){
+                $_SESSION['OK'] = false;
+                $_SESSION['cityError'] = 'Niedozwolony znak "&"';
+                break;
+            }
+        }
+
         
 
         $ch = curl_init();
         $link = "http://api.openweathermap.org/data/2.5/forecast?q=".$city."&appid=b5b20131b81f375cecb483cd3570870f&units=metric";
         curl_setopt($ch, CURLOPT_URL, $link); 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-        $response= curl_exec($ch); 
+        $response= curl_exec($ch);
         $response = json_decode($response);
 
         $cod= $response->cod;
@@ -43,7 +51,7 @@
             $_SESSION['OK'] = false;
             $_SESSION['cityError'] = "Nie podano miasta";
         }
-        else{
+        else if($cod == 200){
             $h = array();
             $tempMin = array();
             $tempMax = array();
@@ -53,7 +61,8 @@
 
             for($i = 0; $i < 40; $i++){
                 $date2 = $response->list[$i]->dt_txt;
-                $hour = substr($date2, 10, strlen($date2));
+ 
+                $hour = substr($date2, 10, 6);
                 $date2 = substr($date2, 0, 10);
 
                 if($date == $date2){
@@ -66,16 +75,15 @@
                 }
                 
             }
-
-            
+        }
+        else{
+            $_SESSION['OK'] = false;
+            $_SESSION['cityError'] = "error???";
         }
         $_SESSION['c'] = $city;
         $_SESSION['d'] = $date;
         
-
         curl_close($ch);
-    
-
     }
 
 ?>
@@ -183,7 +191,7 @@
             </div>
 
             <div class = "footer">
-                    
+                    <p>Filip Kowalewski</p>
             </div>
 
 

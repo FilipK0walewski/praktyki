@@ -69,5 +69,19 @@ p.t{
 
 #block:hover{
     background-color: lightseagreen;
-    cursor: help;
+    cursor: not-allowed;
+}
+
+.footer{
+    text-align: center;
+    padding: 10px;
+    position: fixed; 
+    bottom: 0; 
+    font-size: 10px;
+    color: darkblue;
+}
+
+.footer:hover{
+    color: magenta;
+
 }
